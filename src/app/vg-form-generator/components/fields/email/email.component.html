@@ -1,0 +1,5 @@
+<div class="form-group">
+  <label for="{{model.name}}">{{model.label}}</label>
+  <input type="text" [name]='model.name' class="form-control" />
+  <small class="form-text text-muted" *ngIf='model.helpText'>{{model.helpText}}</small>
+</div>
