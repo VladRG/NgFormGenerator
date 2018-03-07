@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\vg-form-generator",
+    "\\src\\app\\vg-form-generator\\components",
+    "\\src\\app\\vg-form-generator\\components\\containers\\content"
+  ],
+  "SelectedNode": "\\src\\app\\vg-form-generator\\components\\typeConverter.ts",
+  "PreviewInSolutionExplorer": false
+}

@@ -1,5 +1,5 @@
 <div class="form-group {{input.valid ? '' : 'has-danger'}}">
-  <label for="{{model.name}}">{{model.label}}</label>
+  <label *ngIf='model.label' for="{{model.name}}">{{model.label}}</label>
   <select #input='ngModel' [(ngModel)]='model.value' [name]='model.name' class="form-control" [required]='model.required'>
     <option *ngFor="let option of model.options">{{option.text}}</option>
   </select>

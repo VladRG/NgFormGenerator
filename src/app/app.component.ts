@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormModel, TextInputModel, PasswordInputModel } from './vg-form-generator';
+import { FormModel, TextInputModel, PasswordInputModel, TabsContainer } from './vg-form-generator';
 import { ContentContainerModel } from './vg-form-generator/models/containers/ContentContainer';
 import { SelectModel, SelectOption } from './vg-form-generator/models/fields/Select';
 
@@ -13,9 +13,14 @@ export class AppComponent implements OnInit {
   formModel: FormModel;
   ngOnInit() {
     this.formModel = new FormModel();
-    this.formModel.entry = new ContentContainerModel();
-    this.formModel.entry.id = 'Test';
-    this.formModel.entry.label = 'Test Label';
+    const myContainer = new ContentContainerModel();
+    myContainer.id = 'Test';
+    myContainer.label = 'Test Label';
+
+    const tabContainer = new TabsContainer();
+    tabContainer.name = 'tab-container';
+    tabContainer.label = 'tabContainer';
+
 
     const select = new SelectModel();
     select.placeholder = 'Placeholder';
@@ -31,17 +36,20 @@ export class AppComponent implements OnInit {
     password.helpText = 'Type a password.';
     password.validationMessage = 'Password is required';
     password.required = true;
-    this.formModel.entry.children.push(select);
 
     const container = new ContentContainerModel();
     container.label = 'Custom Container 2';
+    container.id = 'container-id';
+    container.children.push(password);
 
     const textInput = new TextInputModel();
     textInput.required = true;
-    textInput.placeholder = 'Placeholder';
+    textInput.placeholder = 'Your name here';
 
-    this.formModel.entry.children.push(password);
+    myContainer.children.push(textInput);
+
+    this.formModel.entry = tabContainer;
+    this.formModel.entry.children.push(myContainer);
     this.formModel.entry.children.push(container);
-    this.formModel.entry.children.push(textInput);
   }
 }

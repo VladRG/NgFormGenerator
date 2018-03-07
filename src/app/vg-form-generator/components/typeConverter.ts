@@ -1,5 +1,10 @@
-import { ContainerTypes, ContainerType, FieldTypes, FieldType } from './../models';
-import { } from './../models';
+import {
+  ContainerTypes,
+  ContainerType,
+  FieldTypes,
+  FieldType,
+  FormComponent
+} from './../models';
 import {
   VgTextComponent,
   VgEmailComponent,
@@ -8,7 +13,8 @@ import {
 } from './fields';
 
 import {
-  VgContentContainerComponent
+  VgContentContainerComponent,
+  VgTabsContainerComponent
 } from './containers';
 import { Component } from '@angular/core';
 
@@ -38,6 +44,8 @@ ContainerTypes.forEach(type => {
     case ContainerType.CONTAINER:
       containerTypeComponents[type] = VgContentContainerComponent;
       break;
+    case ContainerType.TABS:
+      containerTypeComponents[type] = VgTabsContainerComponent;
   }
 });
 
@@ -46,4 +54,13 @@ export const ContainerTypeComponents = containerTypeComponents;
 export function getComponentForType(type: string) {
   const container = containerTypeComponents[type];
   return container ? container : fieldTypeComponents[type];
+}
+
+export function isField(component: FormComponent) {
+  return (FieldTypes.indexOf(component.type) >= 0);
+
+}
+
+export function isContainer(component: FormComponent) {
+  return (ContainerTypes.indexOf(component.type) >= 0);
 }

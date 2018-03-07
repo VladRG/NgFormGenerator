@@ -1,0 +1,26 @@
+<!-- <div *ngIf='model.children.length > 0'>
+  <ul class="nav nav-tabs">
+    <li *ngFor='let child of model.children' class="nav-item">
+      <a class="nav-link {{selected == child.id ? 'active': ''}}" data-toggle="tab" (click)='selectChild(child)' href='#{{child.id}}-tab'>
+        {{child.label}}
+      </a>
+    </li>
+  </ul>
+  <div class="tab-content">
+    <div *ngFor='let child of model.children' role="tabpanel" class="tab-pane {{selected === child.id ? 'active': ''}}" id="{{child.id}}-tab">
+      <ng-container *ngIf='selected === child.id'>
+        <vg-dynamic-container [model]='child'></vg-dynamic-container>
+      </ng-container>
+    </div>
+  </div>
+</div> -->
+
+<ngb-tabset>
+  <ng-container *ngFor='let child of model.children'>
+    <ngb-tab title="{{child.label}}">
+      <ng-template ngbTabContent>
+        <vg-dynamic-container [model]='child'></vg-dynamic-container>
+      </ng-template>
+    </ngb-tab>
+  </ng-container>
+</ngb-tabset>

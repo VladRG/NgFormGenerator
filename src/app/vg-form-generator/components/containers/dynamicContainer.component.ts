@@ -2,11 +2,12 @@ import { Component, OnInit, ViewChild, ViewContainerRef, Input, ReflectiveInject
 import { ContainerModelBase, ContainerType } from './../../models';
 import { ContainerTypeComponents } from './../typeConverter';
 import { VgContentContainerComponent } from './content/content.component';
+import { VgTabsContainerComponent } from '.';
 
 @Component({
   selector: 'vg-dynamic-container',
   template: `<div #dynamicComponentContainer></div>`,
-  entryComponents: [VgContentContainerComponent]
+  entryComponents: [VgContentContainerComponent, VgTabsContainerComponent]
 })
 export class VgDynamicContainerComponent implements OnInit {
   constructor(private resolver: ComponentFactoryResolver) { }

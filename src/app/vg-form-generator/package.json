@@ -16,6 +16,10 @@
     "form",
     "generator"
   ],
+  "dependencies": {
+    "@ng-bootstrap/ng-bootstrap": "^1.0.0",
+    "bootstrap": "^4.0.0-alpha.6"
+  },
   "author": "Vlad Gheorghita",
   "license": "ISC",
   "bugs": {

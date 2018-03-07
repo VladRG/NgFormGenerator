@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { FormModel } from '../models';
-import { ContainerModelBase, ContainerType, FieldModelBase } from './../models';
-import { ContentContainerModel } from '../models';
+import { ContainerModelBase, ContainerType, FieldModelBase, ContentContainerModel, FormModel, FormComponent } from './../models';
+import { isField, isContainer } from './../components/typeConverter';
 
 @Injectable()
 export class VgDeserializationService {
@@ -14,6 +13,19 @@ export class VgDeserializationService {
     formModel.entry = <ContainerModelBase>this.deserializeComponent(json.entry);
     return formModel;
   }
+
+  public serializeForm(source: FormModel, type: SerializeType): Array<{ name: string, value: any }> | any {
+    let result: Array<{ name: string, value: any }> = new Array<{ name: string, value: any }>();
+    switch (type) {
+      case SerializeType.OBJECT:
+        result = this.serializeFormComponent(source.entry);
+        break;
+      case SerializeType.STRING:
+        return JSON.stringify(source);
+    }
+    return result;
+  }
+
 
   copyProperties(from: any, to: any): any {
     for (const prop in from) {
@@ -49,24 +61,24 @@ export class VgDeserializationService {
     return result;
   }
 
-  serializeForm(formModel: FormModel): any {
-    return null;
-  }
-
-  public serialize(source: FormModel, type: Number): String {
-    let result: String = '';
-    switch (type) {
-      case 0:
-        result = JSON.stringify(source);
-        break;
-      case 1:
-        result = JSON.stringify(this.getFields());
-        break;
+  private serializeFormComponent(component: FormComponent): Array<{ name: string, value: any }> {
+    if (isField(component)) {
+      const fieldComponent = component as FieldModelBase;
+      return [{
+        name: component.name,
+        value: fieldComponent.value
+      }];
     }
+    const containerComponent = component as ContainerModelBase;
+    let result = Array<{ name: string, value: any }>();
+    containerComponent.children.forEach(element => {
+      result = result.concat(this.serializeFormComponent(element));
+    });
     return result;
   }
+}
 
-  getFields() {
-
-  }
+enum SerializeType {
+  OBJECT = 'object',
+  STRING = 'string'
 }

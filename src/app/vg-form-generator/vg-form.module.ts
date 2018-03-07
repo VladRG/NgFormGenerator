@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import {
   // Form Component
@@ -12,7 +13,8 @@ import {
 
   // Containers,
   VgContentContainerComponent,
-  VgSelectComponent
+  VgSelectComponent,
+  VgTabsContainerComponent
 } from './components';
 
 import { VgDynamicFieldComponent } from './components/fields/dynamicField.component';
@@ -38,11 +40,13 @@ import { CommonModule } from '@angular/common';
 
     // Containers,
     VgContentContainerComponent,
+    VgTabsContainerComponent,
     VgDynamicContainerComponent
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    NgbModule.forRoot()
   ],
   providers: [
     VgDeserializationService
