@@ -1,4 +1,6 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+
 import {
   // Form Component
   VgFormComponent,
@@ -7,12 +9,14 @@ import {
   VgTextComponent,
   VgEmailComponent,
   VgPasswordComponent,
-  VgDynamicFieldComponent,
 
   // Containers,
   VgContentContainerComponent,
-  VgDynamicContainerComponent
+  VgSelectComponent
 } from './components';
+
+import { VgDynamicFieldComponent } from './components/fields/dynamicField.component';
+import { VgDynamicContainerComponent } from './components/containers/dynamicContainer.component';
 
 // Services
 import {
@@ -30,13 +34,15 @@ import { CommonModule } from '@angular/common';
     VgEmailComponent,
     VgPasswordComponent,
     VgDynamicFieldComponent,
+    VgSelectComponent,
 
     // Containers,
     VgContentContainerComponent,
     VgDynamicContainerComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   providers: [
     VgDeserializationService

@@ -1,3 +1,4 @@
 export * from './fields';
 export * from './containers';
-export * from './Form';
+export * from './form';
+export * from './FormComponent';

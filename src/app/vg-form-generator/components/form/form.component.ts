@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { FormModel } from './../../models';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'vg-form',
@@ -7,7 +8,16 @@ import { FormModel } from './../../models';
   styleUrls: ['./form.component.scss']
 })
 export class VgFormComponent {
+  @ViewChild(NgForm) vgForm: NgForm;
+
   @Input()
   model: FormModel;
 
+  submit() {
+    console.log(this.model);
+  }
+
+  isFormValid() {
+    return this.vgForm ? this.vgForm.valid : false;
+  }
 }

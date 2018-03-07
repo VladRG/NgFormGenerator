@@ -1,9 +1,7 @@
-import {
-  Injectable
-} from '@angular/core';
-import { FormModel } from '../models/Form';
-import { ContainerModelBase, ContainerType, FieldModelBase } from '..';
-import { ContentContainerModel } from '../models/containers/ContentContainer';
+import { Injectable } from '@angular/core';
+import { FormModel } from '../models';
+import { ContainerModelBase, ContainerType, FieldModelBase } from './../models';
+import { ContentContainerModel } from '../models';
 
 @Injectable()
 export class VgDeserializationService {

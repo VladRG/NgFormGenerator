@@ -1,9 +1,7 @@
 import { ContainerType } from './ContainerType.enum';
-import { IFormComponent } from '../IFormComponent';
+import { FormComponent } from '../FormComponent';
 
-export class ContainerModelBase implements IFormComponent {
-  public id: string;
+export class ContainerModelBase extends FormComponent {
   public type: ContainerType;
-  public label: string;
-  public children: Array<IFormComponent>;
+  public children: Array<FormComponent>;
 }

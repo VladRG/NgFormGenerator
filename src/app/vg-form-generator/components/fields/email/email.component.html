@@ -1,5 +1,7 @@
-<div class="form-group">
+<div class="form-group {{!input.valid && input.dirty ? 'has-danger' : ''}}">
   <label for="{{model.name}}">{{model.label}}</label>
-  <input type="text" [name]='model.name' class="form-control" />
+  <input #input='ngModel' type="email" class="form-control" [(ngModel)]='model.value' [id]='model.id' [name]='model.name' [pattern]='emailRegex'
+    [pattern]='model.pattern' [required]='model.required' />
+  <div class="form-control-feedback" *ngIf='input.valid'>{{model.validationMessage}}</div>
   <small class="form-text text-muted" *ngIf='model.helpText'>{{model.helpText}}</small>
 </div>

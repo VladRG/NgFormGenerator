@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ViewContainerRef, Input, ReflectiveInjector, ComponentFactoryResolver } from '@angular/core';
 import { ContainerModelBase, ContainerType } from './../../models';
+import { ContainerTypeComponents } from './../typeConverter';
 import { VgContentContainerComponent } from './content/content.component';
 
 @Component({
@@ -24,18 +25,7 @@ export class VgDynamicContainerComponent implements OnInit {
 
     const resolvedInputs = ReflectiveInjector.resolve(inputProviders);
     const injector = ReflectiveInjector.fromResolvedProviders(resolvedInputs, this.dynamicComponentContainer.parentInjector);
-    let factory = null;
-    if (!this.model) {
-      console.error(this);
-    }
-
-    // switch case
-    switch (this.model.type) {
-      case ContainerType.CONTAINER:
-        factory = this.resolver.resolveComponentFactory(VgContentContainerComponent);
-        break;
-    }
-
+    const factory = this.resolver.resolveComponentFactory(ContainerTypeComponents[this.model.type]);
     const component = factory.create(injector);
     this.dynamicComponentContainer.insert(component.hostView);
   }

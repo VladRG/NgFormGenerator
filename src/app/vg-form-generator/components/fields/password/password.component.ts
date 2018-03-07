@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Injector } from '@angular/core';
 import { PasswordInputModel } from '../../../models';
 
 @Component({
@@ -7,6 +7,9 @@ import { PasswordInputModel } from '../../../models';
   styleUrls: ['./password.component.scss']
 })
 export class VgPasswordComponent {
+  constructor(private injector: Injector) {
+    this.model = injector.get('model');
+  }
   @Input()
   model: PasswordInputModel;
 }

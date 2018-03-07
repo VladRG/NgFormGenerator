@@ -8,3 +8,7 @@ export enum FieldType {
   RADIO = 'radio',
   CHECKBOX = 'checkbox'
 }
+
+export const FieldTypes = Object.keys(FieldType)
+  .filter(type => typeof FieldType[type as string] === 'string')
+  .map(type => FieldType[type as string]);

@@ -1,0 +1,8 @@
+<div class="form-group {{input.valid ? '' : 'has-danger'}}">
+  <label for="{{model.name}}">{{model.label}}</label>
+  <select #input='ngModel' [(ngModel)]='model.value' [name]='model.name' class="form-control" [required]='model.required'>
+    <option *ngFor="let option of model.options">{{option.text}}</option>
+  </select>
+  <div class="form-control-feedback" *ngIf='!input.valid'>{{model.validationMessage}}</div>
+  <small class="form-text text-muted" *ngIf='model.helpText'>{{model.helpText}}</small>
+</div>

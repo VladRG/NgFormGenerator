@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Injector } from '@angular/core';
 import { ContentContainerModel } from '../../../models/containers/ContentContainer';
+import { FieldTypes, FormComponent } from '../../../models';
 
 @Component({
   selector: 'vg-content-container',
@@ -13,4 +14,12 @@ export class VgContentContainerComponent {
 
   @Input()
   model: ContentContainerModel;
+
+  isField(component: FormComponent): boolean {
+    return FieldTypes.indexOf(component.type) >= 0;
+  }
+
+  isContainer(component: FormComponent) {
+    return !this.isField(component);
+  }
 }

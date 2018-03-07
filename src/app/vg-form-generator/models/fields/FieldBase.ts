@@ -1,13 +1,12 @@
 import { FieldType } from './FieldType.enum';
-import { IFormComponent } from '../IFormComponent';
-import { ValidationModel } from './Validation';
+import { FormComponent } from '../FormComponent';
 
-export class FieldModelBase implements IFormComponent {
-  id: string;
+export class FieldModelBase extends FormComponent {
   type: FieldType;
-  label: string;
-  name: string;
   helpText: string;
   placeholder: string;
-  validation: ValidationModel;
+  value: any = '';
+  required?: boolean;
+  pattern?: RegExp;
+  validationMessage?: string;
 }

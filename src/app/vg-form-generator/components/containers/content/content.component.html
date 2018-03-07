@@ -1,3 +1,7 @@
-<div>
-  <h3>{{model.label}}</h3>
+<div *ngIf='model.children.length > 0'>
+  <h4>{{model.label}}</h4>
+  <ng-container *ngFor="let child of model.children">
+    <vg-dynamic-container [model]='child' *ngIf='!isField(child)'></vg-dynamic-container>
+    <vg-dynamic-field [model]='child' *ngIf='isField(child)'></vg-dynamic-field>
+  </ng-container>
 </div>
