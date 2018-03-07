@@ -1,0 +1,25 @@
+{
+  "name": "vg-form-generator",
+  "version": "1.0.0",
+  "description": "Angular 2+ Form Generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VladRG/NgFormGenerator.git"
+  },
+  "keywords": [
+    "Angular2",
+    "json",
+    "form",
+    "generator"
+  ],
+  "author": "Vlad Gheorghita",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VladRG/NgFormGenerator/issues"
+  },
+  "homepage": "https://github.com/VladRG/NgFormGenerator#readme"
+}
