@@ -5,11 +5,24 @@ import { VgEmailComponent } from './email/email.component';
 import { VgPasswordComponent } from './password/password.component';
 import { VgSelectComponent } from './select/select.component';
 import { FieldTypeComponents } from './../typeConverter';
+import { VgDateComponent } from './date/date.component';
+import { VgDatetimeComponent } from './datetime/datetime.component';
+import { VgRadioComponent } from './radio/radio.component';
+import { VgCheckboxComponent } from './checkbox/checkbox.component';
 
 @Component({
   selector: 'vg-dynamic-field',
   template: `<div #dynamicComponentContainer></div>`,
-  entryComponents: [VgTextComponent, VgEmailComponent, VgPasswordComponent, VgSelectComponent]
+  entryComponents: [
+    VgTextComponent,
+    VgEmailComponent,
+    VgPasswordComponent,
+    VgSelectComponent,
+    VgDateComponent,
+    VgDatetimeComponent,
+    VgRadioComponent,
+    VgCheckboxComponent
+  ]
 })
 export class VgDynamicFieldComponent implements OnInit {
   constructor(private resolver: ComponentFactoryResolver) { }

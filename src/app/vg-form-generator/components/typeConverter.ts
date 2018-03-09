@@ -14,9 +14,14 @@ import {
 
 import {
   VgContentContainerComponent,
-  VgTabsContainerComponent
+  VgTabsContainerComponent,
+  VgHtmlContainerComponent
 } from './containers';
 import { Component } from '@angular/core';
+import { VgDateComponent } from './fields/date/date.component';
+import { VgDatetimeComponent } from './fields/datetime/datetime.component';
+import { VgCheckboxComponent } from './fields/checkbox/checkbox.component';
+import { VgRadioComponent } from './fields/radio/radio.component';
 
 const fieldTypeComponents = {};
 FieldTypes.forEach(type => {
@@ -29,6 +34,18 @@ FieldTypes.forEach(type => {
       break;
     case FieldType.EMAIL:
       fieldTypeComponents[type] = VgEmailComponent;
+      break;
+    case FieldType.DATE:
+      fieldTypeComponents[type] = VgDateComponent;
+      break;
+    case FieldType.DATETIME:
+      fieldTypeComponents[type] = VgDatetimeComponent;
+      break;
+    case FieldType.CHECKBOX:
+      fieldTypeComponents[type] = VgCheckboxComponent;
+      break;
+    case FieldType.RADIO:
+      fieldTypeComponents[type] = VgRadioComponent;
       break;
     case FieldType.SELECT:
       fieldTypeComponents[type] = VgSelectComponent;
@@ -46,6 +63,9 @@ ContainerTypes.forEach(type => {
       break;
     case ContainerType.TABS:
       containerTypeComponents[type] = VgTabsContainerComponent;
+      break;
+    case ContainerType.HTML:
+      containerTypeComponents[type] = VgHtmlContainerComponent;
   }
 });
 

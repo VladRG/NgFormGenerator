@@ -1,6 +1,7 @@
 export enum ContainerType {
   TABS = 'tab',
   MASTERDETAILS = 'master-detail',
+  HTML = 'html',
   CONTAINER = 'container'
 }
 

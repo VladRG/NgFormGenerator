@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
 
 import {
   // Form Component
@@ -10,11 +10,16 @@ import {
   VgTextComponent,
   VgEmailComponent,
   VgPasswordComponent,
+  VgSelectComponent,
+  VgDateComponent,
+  VgDatetimeComponent,
+  VgRadioComponent,
+  VgCheckboxComponent,
 
   // Containers,
   VgContentContainerComponent,
-  VgSelectComponent,
-  VgTabsContainerComponent
+  VgTabsContainerComponent,
+  VgHtmlContainerComponent
 } from './components';
 
 import { VgDynamicFieldComponent } from './components/fields/dynamicField.component';
@@ -37,11 +42,16 @@ import { CommonModule } from '@angular/common';
     VgPasswordComponent,
     VgDynamicFieldComponent,
     VgSelectComponent,
+    VgDateComponent,
+    VgDatetimeComponent,
+    VgRadioComponent,
+    VgCheckboxComponent,
 
     // Containers,
     VgContentContainerComponent,
     VgTabsContainerComponent,
-    VgDynamicContainerComponent
+    VgDynamicContainerComponent,
+    VgHtmlContainerComponent
   ],
   imports: [
     CommonModule,

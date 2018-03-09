@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormModel, TextInputModel, PasswordInputModel, TabsContainer } from './vg-form-generator';
+import { FormModel, TextInputModel, PasswordInputModel, TabsContainer, HtmlContainerModel, DateModel, DateTimeModel } from './vg-form-generator';
 import { ContentContainerModel } from './vg-form-generator/models/containers/ContentContainer';
 import { SelectModel, SelectOption } from './vg-form-generator/models/fields/Select';
 
@@ -47,6 +47,23 @@ export class AppComponent implements OnInit {
     textInput.placeholder = 'Your name here';
 
     myContainer.children.push(textInput);
+    const htmlContainer = new HtmlContainerModel();
+    htmlContainer.label = 'HTML';
+    htmlContainer.html = '<h4>HelloWorld</h4><p>Hey</p>';
+    container.children.push(htmlContainer);
+
+    const date = new DateModel();
+    date.label = 'My Date';
+    date.required = true;
+    date.placeholder = 'my date';
+    myContainer.children.push(date);
+
+    const datetime = new DateTimeModel();
+    datetime.label = 'My Date t';
+    datetime.required = true;
+    datetime.placeholder = 'my date t';
+    myContainer.children.push(datetime);
+
 
     this.formModel.entry = tabContainer;
     this.formModel.entry.children.push(myContainer);

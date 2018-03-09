@@ -1,0 +1,13 @@
+<div class="form-group {{!input.valid && input.dirty ? 'has-danger' : ''}}">
+  <label *ngIf='model.label' for="{{model.name}}">{{model.label}}</label>
+  <div class="input-group">
+    <input #input='ngbDatepicker' ngbDatepicker type="text" class="form-control" [placeholder]='model.placeholder' [(ngModel)]='model.value'
+      [id]='model.id' (focus)='input.toggle()'  [name]='model.name' [pattern]='model.pattern' [required]='model.required'
+    />
+    <button class="btn btn-outline-secondary" (click)="input.toggle()" type="button">
+      <i class="glyphicon glyphicon-calendar"></i>
+    </button>
+  </div>
+  <div class="form-control-feedback" *ngIf='input.valid'>{{model.validationMessage}}</div>
+  <small class="form-text text-muted" *ngIf='model.helpText'>{{model.helpText}}</small>
+</div>
