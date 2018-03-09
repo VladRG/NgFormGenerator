@@ -5,4 +5,5 @@ export class FormModel {
   method: string;
   url: string;
   entry: ContainerModelBase;
+  submit: (formModel: FormModel) => void;
 }

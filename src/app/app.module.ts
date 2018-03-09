@@ -12,8 +12,7 @@ import { VgFormGeneratorModule } from './vg-form-generator';
   ],
   imports: [
     BrowserModule,
-    VgFormGeneratorModule,
-    NgbModule
+    VgFormGeneratorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
