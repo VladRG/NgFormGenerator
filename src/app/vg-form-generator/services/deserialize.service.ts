@@ -4,6 +4,7 @@ import { isField, isContainer } from './../components/typeConverter';
 
 @Injectable()
 export class VgDeserializationService {
+
   deserializeForm(json: any): FormModel {
     const formModel = new FormModel();
     formModel.method = json.method;

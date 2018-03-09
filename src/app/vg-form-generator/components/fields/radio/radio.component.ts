@@ -4,7 +4,7 @@ import { FieldModelBase } from '../../../models';
 @Component({
   selector: 'vg-form-radio',
   templateUrl: './radio.component.html',
-  styleUrls: ['./radio.component.html']
+  styleUrls: ['./radio.component.scss']
 })
 
 export class VgRadioComponent {

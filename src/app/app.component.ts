@@ -1,5 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { FormModel, TextInputModel, PasswordInputModel, TabsContainer, HtmlContainerModel, DateModel, DateTimeModel } from './vg-form-generator';
+import {
+  FormModel,
+  TextInputModel,
+  PasswordInputModel,
+  TabsContainer,
+  HtmlContainerModel,
+  DateModel,
+  DateTimeModel,
+  RadioModel,
+  CheckboxModel
+} from './vg-form-generator';
 import { ContentContainerModel } from './vg-form-generator/models/containers/ContentContainer';
 import { SelectModel, SelectOption } from './vg-form-generator/models/fields/Select';
 
@@ -20,7 +30,6 @@ export class AppComponent implements OnInit {
     const tabContainer = new TabsContainer();
     tabContainer.name = 'tab-container';
     tabContainer.label = 'tabContainer';
-
 
     const select = new SelectModel();
     select.placeholder = 'Placeholder';
@@ -63,6 +72,20 @@ export class AppComponent implements OnInit {
     datetime.required = true;
     datetime.placeholder = 'my date t';
     myContainer.children.push(datetime);
+
+    const radio = new RadioModel();
+    radio.helpText = 'My Radio Help Text';
+    radio.name = 'Name';
+    radio.label = 'Radio Button label';
+    container.children.push(radio);
+    radio.id = 'myRadio';
+
+    const checkbox = new CheckboxModel();
+    checkbox.helpText = 'My Radio Help Text';
+    checkbox.name = 'Checkbox';
+    checkbox.label = 'Radio Button label';
+    checkbox.id = 'mycheckbox';
+    container.children.push(checkbox);
 
 
     this.formModel.entry = tabContainer;

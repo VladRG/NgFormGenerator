@@ -1,0 +1,13 @@
+<!-- <div class="form-group">
+  <label *ngIf='model.label' for="{{model.name}}">{{model.label}}</label>
+  <input #input='ngModel' type="radio" class="form-control" [placeholder]='model.placeholder' [(ngModel)]='model.value' [id]='model.id'
+    [name]='model.name' />
+  <small class="form-text text-muted" *ngIf='model.helpText'>{{model.helpText}}</small>
+</div> -->
+<div class="radio">
+  <label>
+      <input #input='ngModel' type="radio" [placeholder]='model.placeholder' [(ngModel)]='model.value' [id]='model.id'
+    [name]='model.name' />
+    {{model.label}}
+  </label>
+</div>

@@ -1,15 +1,15 @@
 <div class="form-group {{!input.valid && input.dirty ? 'has-danger' : ''}}">
   <label *ngIf='model.label' for="{{model.name}}">{{model.label}}</label>
-  <div class="row no-margin no-padding">
-    <div class="input-group col">
-      <input #input='ngbDatepicker' ngbDatepicker type="text" class="form-control" [placeholder]='model.placeholder' [(ngModel)]='model.value'
+  <div class="d-flex flex-row no-margin no-padding">
+    <div class="input-group p-2">
+      <input #input='ngbDatepicker' ngbDatepicker type="text" class="form-control" [placeholder]='model.placeholder' [(ngModel)]='date'
         [id]='model.id' (focus)='input.toggle()' [name]='model.name' [pattern]='model.pattern' [required]='model.required'
       />
       <button class="btn btn-outline-secondary" (click)="input.toggle()" type="button">
-        <i class="glyphicon glyphicon-calendar"></i>
+        <i class="fa fa-calendar"></i>
       </button>
     </div>
-    <div class="col">
+    <div class="p-2 padding-left-10">
       <ngb-timepicker [(ngModel)]='time'></ngb-timepicker>
     </div>
   </div>

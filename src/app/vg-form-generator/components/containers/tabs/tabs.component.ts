@@ -4,7 +4,7 @@ import { TabsContainer, FormComponent } from '../../../models';
 @Component({
   selector: 'vg-form-tabs',
   templateUrl: './tabs.component.html',
-  styleUrls: ['./tabs.component.css'],
+  styleUrls: ['./tabs.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class VgTabsContainerComponent {
