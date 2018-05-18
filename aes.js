@@ -1,7 +1,3 @@
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
-/*  AES implementation in JavaScript (c) Chris Veness 2005-2011                                   */
-/*   - see http://csrc.nist.gov/publications/PubsFIPS.html#197                                    */
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
  
 var Aes = {}; // Aes namespace
  
@@ -119,14 +115,35 @@ Aes.mixColumns = function (s, Nb) { // combine bytes of each col of state S [§5
 };
  
 Aes.addRoundKey = function (state, w, rnd, Nb) { // xor Round Key into state S [§5.1.4]
-    const roundKey = [];
+  const roundKey = [];
   for (var r = 0; r < 4; r++) {
-	for (var c = 0; c < Nb; c++) {
-		state[r][c] ^= w[rnd * 4 + c][r];
-		roundKey.push(w[rnd * 4 + c][r].toString(16));
-	}
+		for (var c = 0; c < Nb; c++) {
+			state[r][c] ^= w[rnd * 4 + c][r];
+			roundKey.push(w[rnd * 4 + c][r].toString(16));
+		}
   }
-  console.log(roundKey);
+	const result = [];
+  result.push(roundKey[0]);
+  result.push(roundKey[4]);
+  result.push(roundKey[8]);
+  result.push(roundKey[12]);
+
+	result.push(roundKey[1]);
+  result.push(roundKey[5]);
+  result.push(roundKey[9]);
+  result.push(roundKey[13])
+  
+  result.push(roundKey[2]);
+  result.push(roundKey[6]);
+  result.push(roundKey[10]);
+  result.push(roundKey[14])
+  
+  result.push(roundKey[3]);
+  result.push(roundKey[7]);
+  result.push(roundKey[11]);
+  result.push(roundKey[15])
+  
+  console.log(result);
   return state;
 };
  
@@ -182,7 +199,6 @@ Aes.Ctr.encrypt = function (plaintext, password, nBits) {
   if (!(nBits == 128 || nBits == 192 || nBits == 256)) return ''; // standard allows 128/192/256 bit keys
   plaintext = Utf8.encode(plaintext);
   password = Utf8.encode(password);
-  console.log(password);
   //var t = new Date();  // timer
   // use AES itself to encrypt password to get cipher key (using plain password as source for key 
   // expansion) - gives us well encrypted key
@@ -193,20 +209,11 @@ Aes.Ctr.encrypt = function (plaintext, password, nBits) {
   }
   
   var key = pwBytes; // gives us 16-byte key
-  key = key.concat(key.slice(0, nBytes - 16)); // expand key to 16/24/32 bytes long
+  // key = key.concat(key.slice(0, nBytes - 16)); // expand key to 16/24/32 bytes long
   
   // initialise 1st 8 bytes of counter block with nonce (NIST SP800-38A §B.2): [0-1] = millisec, 
   // [2-3] = random, [4-7] = seconds, together giving full sub-millisec uniqueness up to Feb 2106
   var counterBlock = new Array(blockSize);
- 
-  var nonce = (new Date()).getTime(); // timestamp: milliseconds since 1-Jan-1970
-  var nonceMs = nonce % 1000;
-  var nonceSec = Math.floor(nonce / 1000);
-  var nonceRnd = Math.floor(Math.random() * 0xffff);
- 
-  for (var i = 0; i < 2; i++) counterBlock[i] = (nonceMs >>> i * 8) & 0xff;
-  for (var i = 0; i < 2; i++) counterBlock[i + 2] = (nonceRnd >>> i * 8) & 0xff;
-  for (var i = 0; i < 4; i++) counterBlock[i + 4] = (nonceSec >>> i * 8) & 0xff;
  
   // and convert it to a string to go on the front of the ciphertext
   var ctrTxt = '';
@@ -214,6 +221,7 @@ Aes.Ctr.encrypt = function (plaintext, password, nBits) {
  
   // generate key schedule - an expansion of the key into distinct Key Rounds for each round
   var keySchedule = Aes.keyExpansion(key);
+
   
   var blockCount = Math.ceil(plaintext.length / blockSize);
   var ciphertxt = new Array(blockCount); // ciphertext as array of strings
@@ -398,8 +406,8 @@ Utf8.decode = function (strUtf) {
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
  
 // Usage: this implementation would be invoked as follows:
-var password = 'L0ck it up saf3';
-var plaintext = 'pssst ... Ä‘on\'t tell anyøne!';
+var password = 'Thats my Kung Fu';
+var plaintext = 'my code';
  
 
 var ciphertext = Aes.Ctr.encrypt(plaintext, password, 128);
